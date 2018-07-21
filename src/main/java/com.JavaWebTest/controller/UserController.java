@@ -19,8 +19,6 @@ public class UserController {
 
     @RequestMapping("/showUser.do")
     public void selectUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        System.out.println("版本测试");
-        System.out.println("第二次测试");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         long userId = Long.parseLong(request.getParameter("id"));
