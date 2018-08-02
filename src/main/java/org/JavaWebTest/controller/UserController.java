@@ -1,7 +1,7 @@
-package com.JavaWebTest.controller;
+package org.JavaWebTest.controller;
 
-import com.JavaWebTest.model.User;
-import com.JavaWebTest.service.IUserService;
+import org.JavaWebTest.model.User;
+import org.JavaWebTest.service.IUserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;

@@ -67,8 +67,13 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version> 4.12</version>
+      <version>4.12</version>
     </dependency>
+      <dependency>
+          <groupId>log4j</groupId>
+          <artifactId>log4j</artifactId>
+          <version> 1.2.17</version>
+      </dependency>
       <!-- JSON -->
       <dependency>
           <groupId>com.fasterxml.jackson.core</groupId>
@@ -87,6 +92,11 @@
           <groupId>com.mchange</groupId>
           <artifactId>c3p0</artifactId>
           <version>0.9.5.2</version>
+      </dependency>
+      <dependency>
+          <groupId>commons-dbcp</groupId>
+          <artifactId>commons-dbcp</artifactId>
+          <version>1.4</version>
       </dependency>
       <!-- MyBatis -->
       <dependency>
@@ -141,7 +151,11 @@
           <artifactId>spring-test</artifactId>
           <version>${spring.version}</version>
       </dependency>
-
+      <dependency>
+          <groupId>org.mybatis</groupId>
+          <artifactId>mybatis</artifactId>
+          <version>3.4.0</version>
+      </dependency>
   </dependencies>
 
 </project>

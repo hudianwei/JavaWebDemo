@@ -1,4 +1,5 @@
-package com.JavaWebTest.model;
+package org.JavaWebTest.model;
+
 import java.util.Date;
 
 public class User {

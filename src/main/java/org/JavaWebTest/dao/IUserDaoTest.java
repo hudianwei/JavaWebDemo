@@ -1,21 +1,26 @@
-package com.JavaWebTest.dao;
+package org.JavaWebTest.dao;
 
-import com.JavaWebTest.model.User;
+import org.JavaWebTest.model.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
+/*
+* mybatis和spring整合是需要写xml文件或使用注解免去大量的xml编写
+*
+* */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({"classpath:spring-mybatis.xml"})
+@ContextConfiguration({"classpath:spring-MapperFactoryBean.xml"})
 public class IUserDaoTest {
     @Autowired
     private IUserDao dao;
+
     @Test
-    public void testSeletUser()throws Exception{
-        long id=1;
-        User user=dao.selectUser(id);
+    public void testSeletUser() throws Exception {
+        long id = 1;
+        User user = dao.selectUser(id);
         System.out.print(user.getUsername());
     }
+
 }

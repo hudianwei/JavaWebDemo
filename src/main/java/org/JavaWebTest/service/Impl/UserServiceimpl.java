@@ -1,13 +1,13 @@
-package com.JavaWebTest.service.Impl;
+package org.JavaWebTest.service.Impl;
 
-import com.JavaWebTest.dao.IUserDao;
-import com.JavaWebTest.model.User;
-import com.JavaWebTest.service.IUserService;
+import org.JavaWebTest.dao.IUserDao;
+import org.JavaWebTest.model.User;
+import org.JavaWebTest.service.IUserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
-@Service("userService")
+@Service
 public class UserServiceimpl implements IUserService {
     @Resource
     private IUserDao userDao;

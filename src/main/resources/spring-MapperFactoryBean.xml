@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:cache="http://www.springframework.org/schema/cache"
+       xmlns:p="http://www.springframework.org/schema/p" xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/cache
+        http://www.springframework.org/schema/cache/spring-cache.xsd">
+    <!--自动扫描-->
+    <context:component-scan base-package="org.JavaWebTest.dao"></context:component-scan>
+    <!-- 配置数据库相关参数properties的属性：${url} -->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+    <!--数据库连接池配置-->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+    <!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!--
+       创建数据映射器，数据映射器必须为接口
+       这种配置方式有个缺点，有多少个dao接口就要配置多少个数据映射器，增加了开发时间
+       可用MapperScannerConfigurer代替，能够完全解决问题
+      <bean id="studentMapper"class="org.mybatis.spring.mapper.MapperFactoryBean">
+           <propertyname="mapperInterface"value="com.hys.app.student.dao.StudentDao" />
+           <propertyname="sqlSessionFactory"ref="sqlSessionFactory"/>
+      </bean>
+      -->
+
+    <!-- 自动扫描com/hys/app/**/dao下的所有dao接口，并实现这些接口，可直接在程序中使用dao接口，不用再获取sqlsession对象 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--
+        basePackage 属性是映射器接口文件的包路径。
+                  你可以使用分号或逗号作为分隔符设置多于一个的包路径
+        -->
+        <property name="basePackage" value="org/JavaWebTest/**/dao"/>
+        <!--
+                  因为会自动装配 SqlSessionFactory和SqlSessionTemplate
+                  所以没 有 必 要去 指 定 SqlSessionFactory或SqlSessionTemplate
+                  因此可省略不配置；
+                  但是,如果你使 用了一个 以上的 DataSource，那么自动装配可能会失效。
+                  这种 情况下，你可以使用sqlSessionFactoryBeanName或sqlSessionTemplateBeanName属性来设置正确的 bean名称来使用；
+        -->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+
+
+</beans>

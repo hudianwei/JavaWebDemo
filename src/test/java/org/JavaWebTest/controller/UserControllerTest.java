@@ -1,4 +1,4 @@
-package com.JavaWebTest.controller;
+package org.JavaWebTest.controller;
 
 import static org.junit.Assert.*;
 

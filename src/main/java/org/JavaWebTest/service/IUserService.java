@@ -1,6 +1,6 @@
-package com.JavaWebTest.service;
+package org.JavaWebTest.service;
 
-import com.JavaWebTest.model.User;
+import org.JavaWebTest.model.User;
 
 public interface IUserService {
     public User selectUser(long userid) ;
