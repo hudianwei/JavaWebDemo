@@ -18,7 +18,6 @@ public class IUserDaoTest {
 
     @Test
     public void testSeletUser() throws Exception {
-        System.out.println("ÉÏ´«");
         long id = 1;
         User user = dao.selectUser(id);
         System.out.print(user.getUsername());
